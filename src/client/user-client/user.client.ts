@@ -22,7 +22,7 @@ export class UserClient {
     }
   }
 
-  public async get() {
+  public async get(): Promise<any> {
     this.httpService.get(this.path).pipe(
       map((value) => value.data),
       catchError(async (err) => {

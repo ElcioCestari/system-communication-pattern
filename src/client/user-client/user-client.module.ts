@@ -1,11 +1,11 @@
 import { Logger, Module } from '@nestjs/common';
 import { UserClient } from './user.client';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [ConfigModule, HttpModule],
-  providers: [UserClient, ConfigService, Logger],
+  providers: [UserClient, Logger],
   exports: [UserClient],
 })
 export class UserClientModule {}
