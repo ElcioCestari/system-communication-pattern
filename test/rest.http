@@ -1,13 +1,13 @@
 ### GET request with a header
-GET http://localhost:3000/user
+GET http://localhost:3001/user
 Accept: application/json
 
 ### GET request with a header
-GET http://localhost:3000/user/1
+GET http://localhost:3001/user/1
 Accept: application/json
 
 ### Send POST request with json body
-POST http://localhost:3000/user
+POST http://localhost:3001/user
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Send POST request with json body
-PATCH http://localhost:3000/user/1
+PATCH http://localhost:3001/user/1
 Content-Type: application/json
 
 {
@@ -25,5 +25,5 @@ Content-Type: application/json
 }
 
 ### DELETE request with a header
-DELETE http://localhost:3000/user/1
+DELETE http://localhost:3001/user/1
 Accept: application/json
