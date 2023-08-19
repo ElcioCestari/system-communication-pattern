@@ -22,6 +22,7 @@ lerna-debug.log*
 /.idea
 .idea/*
 .idea/httpRequests/*
+.idea/httpRequests/http-requests-log.http
 .project
 .classpath
 .c9/
