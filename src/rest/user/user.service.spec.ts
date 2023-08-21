@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
 import { UserClient } from '../../client/user-client/user.client';
+import { UserMapper } from './mapper/user-mapper';
+import { Logger } from '@nestjs/common';
 
 describe('UserService', () => {
   let service: UserService;
@@ -11,6 +13,14 @@ describe('UserService', () => {
         UserService,
         {
           provide: UserClient,
+          useValue: {},
+        },
+        {
+          provide: UserMapper,
+          useValue: {},
+        },
+        {
+          provide: Logger,
           useValue: {},
         },
       ],

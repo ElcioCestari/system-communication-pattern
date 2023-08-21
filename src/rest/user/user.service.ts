@@ -1,23 +1,33 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { Injectable, Logger } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserClient } from '../../client/user-client/user.client';
+import { UserMapper } from './mapper/user-mapper';
+import { User } from '../../client/entity/user';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userClient: UserClient) {}
+  constructor(
+    private readonly userClient: UserClient,
+    private readonly mapper: UserMapper,
+    private readonly logger: Logger,
+  ) {}
 
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  async create(entity: User) {
+    try {
+      return await this.userClient.post(entity);
+    } catch (err) {
+      this.logger.error(`Error to save ${err}`);
+      throw err;
+    }
   }
 
-  findAll(): Promise<CreateUserDto> {
-    return this.userClient
-      .get()
-      .then((user) => user)
-      .catch((err) => {
-        throw err;
-      });
+  async findAll(): Promise<User[]> {
+    try {
+      return await this.userClient.get();
+    } catch (err) {
+      this.logger.error(`Error to find all users: ${err}`);
+      throw err;
+    }
   }
 
   findOne(id: number) {
