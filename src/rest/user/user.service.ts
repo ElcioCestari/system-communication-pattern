@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserClient } from '../../client/user-client/user.client';
 import { UserMapper } from './mapper/user-mapper';
@@ -30,8 +30,17 @@ export class UserService {
     }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string) {
+    try {
+      const user: User = await this.userClient.getById(id);
+      if (!user) {
+        throw new NotFoundException(`User with id ${id} was not found`);
+      }
+      return user;
+    } catch (e) {
+      this.logger.error(`Error to findOne ${e}`);
+      throw e;
+    }
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

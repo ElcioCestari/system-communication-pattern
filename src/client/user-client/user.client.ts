@@ -44,4 +44,15 @@ export class UserClient {
     );
     return lastValueFrom(observable);
   }
+
+  async getById(id: string): Promise<User> {
+    const observable = this.httpService.get<User>(`${this.path}/${id}`).pipe(
+      map((value) => value.data),
+      catchError(async (err) => {
+        this.logger.error(`error to make a GET ${err}`);
+        throw err;
+      }),
+    );
+    return lastValueFrom(observable);
+  }
 }
