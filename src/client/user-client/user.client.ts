@@ -55,4 +55,17 @@ export class UserClient {
     );
     return lastValueFrom(observable);
   }
+
+  async put(id: string, user: User): Promise<User> {
+    const observable = this.httpService
+      .put<User>(`${this.path}/${id}`, user)
+      .pipe(
+        map((value) => value.data),
+        catchError(async (err) => {
+          this.logger.error(`error to make a PUT ${err}`);
+          throw err;
+        }),
+      );
+    return lastValueFrom(observable);
+  }
 }

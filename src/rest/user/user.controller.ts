@@ -5,12 +5,11 @@ import {
   Delete,
   Get,
   Param,
-  Patch,
   Post,
+  Put,
   UseInterceptors,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from '../../client/entity/user';
 
 @Controller('user')
@@ -33,9 +32,9 @@ export class UserController {
     return this.userService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
+  @Put(':id')
+  update(@Param('id') id: string, @Body() user: User) {
+    return this.userService.update(id, user);
   }
 
   @Delete(':id')

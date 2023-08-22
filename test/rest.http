@@ -11,7 +11,7 @@ POST http://localhost:3001/user
 Content-Type: application/json
 
 {
-  "name": "John Doe",
+  "name": "John MARIA ",
   "document": "123456789",
   "birthDate": "1990-01-01",
   "phones": ["123-456-7890", "987-654-3210"],
@@ -20,13 +20,17 @@ Content-Type: application/json
 
 
 ### Send POST request with json body
-PATCH http://localhost:3001/user/1
+PUT http://localhost:3001/user/1
 Content-Type: application/json
 
 {
-  "id": 999,
-  "value": "content"
+  "name": "John MARIA 1",
+  "document": "123456789",
+  "birthDate": "1990-01-01",
+  "phones": ["123-456-7890", "987-654-3210"],
+  "addresses": ["123 Main St, CityA", "456 Elm St, CityB"]
 }
+
 
 ### DELETE request with a header
 DELETE http://localhost:3001/user/1
