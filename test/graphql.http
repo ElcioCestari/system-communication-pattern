@@ -1,0 +1,23 @@
+# GET ALL USER
+GRAPHQL http://localhost:3001/graphql
+
+query GET_ALL {
+ findAll {
+  name,
+  document,
+  phones,
+  birthDate,
+  addresses
+}
+}
+
+###
+# GET ONE USER BY ID
+GRAPHQL http://localhost:3001/graphql
+
+query GET_ONE_BY_ID {
+  user(id: 2) {
+    name,
+    id
+  }
+}

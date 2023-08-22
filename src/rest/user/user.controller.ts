@@ -12,7 +12,7 @@ import {
 import { UserService } from './user.service';
 import { User } from '../../client/entity/user';
 
-@Controller('user')
+@Controller('/api/user')
 @UseInterceptors(ClassSerializerInterceptor)
 export class UserController {
   constructor(private readonly userService: UserService) {}
