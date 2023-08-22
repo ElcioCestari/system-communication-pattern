@@ -56,7 +56,16 @@ export class UserService {
     }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number) {
+    try {
+      const user: User = await this.userClient.getById('' + id);
+      if (!user) {
+        throw new NotFoundException(`User with id ${id} was not found`);
+      }
+      return this.userClient.delete(id);
+    } catch (e) {
+      this.logger.error(`Error to findOne ${e}`);
+      throw e;
+    }
   }
 }
