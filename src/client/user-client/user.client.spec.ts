@@ -14,7 +14,7 @@ describe('UserClient', () => {
         {
           provide: ConfigService,
           useValue: {
-            get: jest.fn(),
+            get: jest.fn().mockReturnValue('fake_data'),
           },
         },
         {
