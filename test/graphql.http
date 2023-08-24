@@ -45,3 +45,36 @@ mutation SAVE {
     document
   }
 }
+
+###
+# UPDATE USER
+GRAPHQL http://localhost:3001/graphql
+
+mutation UPDATE {
+  updateUser(id: "2", updateUserInput: {
+    name: "Don Julio",
+    document: "123456",
+    phones: [
+          "123-456-7890",
+          "987-654-3210"
+        ],
+    birthDate: "1986-01-01",
+    addresses: [
+          "123 Main St, CityA",
+          "456 Elm St, CityB"
+        ]
+  }) {
+    id,
+    name,
+    document
+  }
+}
+
+
+###
+# DELETE USER
+GRAPHQL http://localhost:3001/graphql
+
+mutation DELETE {
+  removeUser(id: "1")
+}

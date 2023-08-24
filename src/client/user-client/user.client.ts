@@ -69,7 +69,7 @@ export class UserClient {
     return lastValueFrom(observable);
   }
 
-  delete(id: number): Promise<any> {
+  delete(id: string): Promise<any> {
     const observable = this.httpService.delete<User>(`${this.path}/${id}`).pipe(
       map((value) => value.data),
       catchError(async (err) => {

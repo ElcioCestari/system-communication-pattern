@@ -56,7 +56,7 @@ export class UserService {
     }
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     try {
       const user: User = await this.userClient.getById('' + id);
       if (!user) {

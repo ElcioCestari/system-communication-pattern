@@ -1,3 +1,70 @@
+PUT http://localhost:3001/api/user/2
+Content-Type: application/json
+Content-Length: 190
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "John MARIA 1",
+  "document": "123456789",
+  "birthDate": "1990-01-01",
+  "phones": ["123-456-7890", "987-654-3210"],
+  "addresses": ["123 Main St, CityA", "456 Elm St, CityB"]
+}
+
+<> 2023-08-23T221458.200.json
+
+###
+
+PUT http://localhost:3001/api/user/2
+Content-Type: application/json
+Content-Length: 190
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "John MARIA 1",
+  "document": "123456789",
+  "birthDate": "1990-01-01",
+  "phones": ["123-456-7890", "987-654-3210"],
+  "addresses": ["123 Main St, CityA", "456 Elm St, CityB"]
+}
+
+<> 2023-08-23T221439.200.json
+
+###
+
+GET http://localhost:3001/user
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-08-23T221350.404.json
+
+###
+
+PUT http://localhost:3001/user/2
+Content-Type: application/json
+Content-Length: 190
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "John MARIA 1",
+  "document": "123456789",
+  "birthDate": "1990-01-01",
+  "phones": ["123-456-7890", "987-654-3210"],
+  "addresses": ["123 Main St, CityA", "456 Elm St, CityB"]
+}
+
+<> 2023-08-23T221333.404.json
+
+###
+
 DELETE http://localhost:3000/user/1
 Accept: application/json
 Connection: Keep-Alive

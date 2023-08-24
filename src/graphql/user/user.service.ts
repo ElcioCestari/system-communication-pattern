@@ -25,7 +25,12 @@ export class UserService {
     return this.client.put(id, newVar);
   }
 
-  remove(id: number) {
-    return this.client.delete(id);
+  async remove(id: string) {
+    try {
+      await this.client.delete(id);
+      return true;
+    } catch (e) {
+      throw e;
+    }
   }
 }
