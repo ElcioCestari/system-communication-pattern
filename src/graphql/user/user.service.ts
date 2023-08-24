@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { UserClient } from '../../client/user-client/user.client';
+import { User } from '../../client/entity/user';
 
 @Injectable()
 export class UserService {
@@ -20,7 +21,8 @@ export class UserService {
   }
 
   update(id: string, updateUserInput: UpdateUserInput) {
-    this.client.put(id, { ...updateUserInput, id: id } as any);
+    const newVar = { ...updateUserInput, id: id } as User;
+    return this.client.put(id, newVar);
   }
 
   remove(id: number) {

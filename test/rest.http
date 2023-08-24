@@ -1,13 +1,13 @@
 ### GET request with a header
-GET http://localhost:3001/user
+GET http://localhost:3001/api/user
 Accept: application/json
 
 ### GET request with a header
-GET http://localhost:3001/user/1
+GET http://localhost:3001/api/user/1
 Accept: application/json
 
 ### Send POST request with json body
-POST http://localhost:3001/user
+POST http://localhost:3001/api/user
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 
 ### Send POST request with json body
-PUT http://localhost:3001/user/1
+PUT http://localhost:3001/api/user/2
 Content-Type: application/json
 
 {
@@ -33,5 +33,5 @@ Content-Type: application/json
 
 
 ### DELETE request with a header
-DELETE http://localhost:3001/user/1
+DELETE http://localhost:3001/api/user/1
 Accept: application/json
