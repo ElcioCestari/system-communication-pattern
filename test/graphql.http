@@ -2,13 +2,13 @@
 GRAPHQL http://localhost:3001/graphql
 
 query GET_ALL {
- findAll {
-  name,
-  document,
-  phones,
-  birthDate,
-  addresses
-}
+   findAll {
+    name,
+    document,
+    phones,
+    birthDate,
+    addresses
+  }
 }
 
 ###
@@ -19,5 +19,29 @@ query GET_ONE_BY_ID {
   user(id: 2) {
     name,
     id
+  }
+}
+
+###
+# SAVE USER
+GRAPHQL http://localhost:3001/graphql
+
+mutation SAVE {
+  createUser(createUserInput: {
+    name: "Dona Maria",
+    document: "123456",
+    phones: [
+          "123-456-7890",
+          "987-654-3210"
+        ],
+    birthDate: "1986-01-01",
+    addresses: [
+          "123 Main St, CityA",
+          "456 Elm St, CityB"
+        ]
+  }) {
+    id,
+    name,
+    document
   }
 }

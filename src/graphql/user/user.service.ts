@@ -8,7 +8,7 @@ export class UserService {
   constructor(private readonly client: UserClient) {}
 
   create(createUserInput: CreateUserInput) {
-    return 'This action adds a new user';
+    return this.client.post({ ...createUserInput, id: null });
   }
 
   async findAll() {
@@ -19,11 +19,11 @@ export class UserService {
     return this.client.getById('' + id);
   }
 
-  update(id: number, updateUserInput: UpdateUserInput) {
-    return `This action updates a #${id} user`;
+  update(id: string, updateUserInput: UpdateUserInput) {
+    this.client.put(id, { ...updateUserInput, id: id } as any);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return this.client.delete(id);
   }
 }
