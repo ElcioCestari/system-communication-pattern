@@ -3,7 +3,7 @@ import { UserController } from './user.controller';
 import { UserMapper } from '../mapper/user-mapper';
 import { Logger } from '@nestjs/common';
 import { UserClient } from '../../client/user-client/user.client';
-import { UserService } from '../../common/service/user/user.service';
+import { UserService } from '../../common/service/user.service';
 import { BaseUser } from '../../base/entity/base-user';
 
 describe('UserController', () => {
