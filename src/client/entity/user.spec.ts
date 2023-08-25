@@ -1,4 +1,4 @@
-import { User } from './user';
+import { User } from '../../graphql/user/entities/user.entity';
 
 describe('user', () => {
   it('when create a user then should create with a id', () => {

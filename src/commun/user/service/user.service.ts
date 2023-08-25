@@ -1,7 +1,8 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { UserClient } from '../../../client/user-client/user.client';
+import { BaseUser } from '../../../client/entity/base-user';
+
 // import { UserMapper } from './mapper/service-mapper';
-import { User } from '../../../client/entity/user';
 
 @Injectable()
 export class UserService {
@@ -11,7 +12,7 @@ export class UserService {
     private readonly logger: Logger,
   ) {}
 
-  async create(entity: User) {
+  async create(entity: BaseUser) {
     try {
       return await this.userClient.post(entity);
     } catch (err) {
@@ -20,7 +21,7 @@ export class UserService {
     }
   }
 
-  async findAll(): Promise<User[]> {
+  async findAll(): Promise<BaseUser[]> {
     try {
       return await this.userClient.get();
     } catch (err) {
@@ -31,7 +32,7 @@ export class UserService {
 
   async findOne(id: string) {
     try {
-      const user: User = await this.userClient.getById(id);
+      const user: BaseUser = await this.userClient.getById(id);
       if (!user) {
         throw new NotFoundException(`User with id ${id} was not found`);
       }
@@ -42,9 +43,9 @@ export class UserService {
     }
   }
 
-  async update(id: string, user: User) {
+  async update(id: string, user: BaseUser) {
     try {
-      const foundUser: User = await this.userClient.getById(id);
+      const foundUser: BaseUser = await this.userClient.getById(id);
       if (!foundUser) {
         throw new NotFoundException(`User with id ${id} was not found`);
       }
@@ -58,7 +59,7 @@ export class UserService {
 
   async remove(id: string) {
     try {
-      const user: User = await this.userClient.getById('' + id);
+      const user: BaseUser = await this.userClient.getById('' + id);
       if (!user) {
         throw new NotFoundException(`User with id ${id} was not found`);
       }

@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserController } from './user.controller';
-import { UserService } from './service.service';
 import { UserMapper } from './mapper/user-mapper';
 import { Logger } from '@nestjs/common';
 import { UserClient } from '../../client/user-client/user.client';
-import { User } from '../../client/entity/user';
+import { UserService } from '../../commun/user/service/user.service';
+import { BaseUser } from '../../client/entity/base-user';
 
 describe('UserController', () => {
   let userController: UserController;
@@ -36,7 +36,7 @@ describe('UserController', () => {
       _birthDate: '1990-01-01',
       _phones: ['123-456-7890', '987-654-3210'],
       _addresses: ['123 Main St, CityA', '456 Elm St, CityB'],
-    } as unknown as User;
+    } as unknown as BaseUser;
 
     jest
       .spyOn(userService, 'create')

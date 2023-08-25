@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { BaseMapper } from '../../../base/mapper/base-mapper';
 import { CreateUserDto } from '../dto/create-user.dto';
-import { User } from '../../../client/entity/user';
+import { User } from '../../../graphql/user/entities/user.entity';
+import { BaseUser } from '../../../client/entity/base-user';
 
 @Injectable()
-export class UserMapper implements BaseMapper<User, CreateUserDto> {
-  toEntity(dto: CreateUserDto): User {
+export class UserMapper implements BaseMapper<BaseUser, CreateUserDto> {
+  toEntity(dto: CreateUserDto): BaseUser {
     return new User(
       null,
       dto.name,
@@ -16,7 +17,7 @@ export class UserMapper implements BaseMapper<User, CreateUserDto> {
     );
   }
 
-  toCreateDTO(entity: User): CreateUserDto {
+  toCreateDTO(entity: BaseUser): CreateUserDto {
     return new CreateUserDto(
       entity.name,
       entity.document,

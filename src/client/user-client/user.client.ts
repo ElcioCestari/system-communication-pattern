@@ -6,7 +6,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { catchError, lastValueFrom, map } from 'rxjs';
-import { User } from '../entity/user';
+import { BaseUser } from '../entity/base-user';
 
 @Injectable()
 export class UserClient {
@@ -23,8 +23,8 @@ export class UserClient {
     }
   }
 
-  public async get(): Promise<User[]> {
-    const observable = this.httpService.get<User[]>(this.path).pipe(
+  public async get(): Promise<BaseUser[]> {
+    const observable = this.httpService.get<BaseUser[]>(this.path).pipe(
       map((value) => value.data),
       catchError(async (err) => {
         this.logger.error(`error to make a GET ${err}`);
@@ -34,8 +34,8 @@ export class UserClient {
     return lastValueFrom(observable);
   }
 
-  public async post(user: User): Promise<User> {
-    const observable = this.httpService.post<User>(this.path, user).pipe(
+  public async post(user: BaseUser): Promise<BaseUser> {
+    const observable = this.httpService.post<BaseUser>(this.path, user).pipe(
       map((value) => value.data),
       catchError(async (err) => {
         this.logger.error(`error to make a GET ${err}`);
@@ -45,20 +45,22 @@ export class UserClient {
     return lastValueFrom(observable);
   }
 
-  async getById(id: string): Promise<User> {
-    const observable = this.httpService.get<User>(`${this.path}/${id}`).pipe(
-      map((value) => value.data),
-      catchError(async (err) => {
-        this.logger.error(`error to make a GET ${err}`);
-        throw err;
-      }),
-    );
-    return lastValueFrom(observable);
-  }
-
-  async put(id: string, user: User): Promise<User> {
+  async getById(id: string): Promise<BaseUser> {
     const observable = this.httpService
-      .put<User>(`${this.path}/${id}`, user)
+      .get<BaseUser>(`${this.path}/${id}`)
+      .pipe(
+        map((value) => value.data),
+        catchError(async (err) => {
+          this.logger.error(`error to make a GET ${err}`);
+          throw err;
+        }),
+      );
+    return lastValueFrom(observable);
+  }
+
+  async put(id: string, user: BaseUser): Promise<BaseUser> {
+    const observable = this.httpService
+      .put<BaseUser>(`${this.path}/${id}`, user)
       .pipe(
         map((value) => value.data),
         catchError(async (err) => {
@@ -70,13 +72,15 @@ export class UserClient {
   }
 
   delete(id: string): Promise<any> {
-    const observable = this.httpService.delete<User>(`${this.path}/${id}`).pipe(
-      map((value) => value.data),
-      catchError(async (err) => {
-        this.logger.error(`error to make a DELETE ${err}`);
-        throw err;
-      }),
-    );
+    const observable = this.httpService
+      .delete<BaseUser>(`${this.path}/${id}`)
+      .pipe(
+        map((value) => value.data),
+        catchError(async (err) => {
+          this.logger.error(`error to make a DELETE ${err}`);
+          throw err;
+        }),
+      );
     return lastValueFrom(observable);
   }
 }

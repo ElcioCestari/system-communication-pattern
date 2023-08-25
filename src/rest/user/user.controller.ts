@@ -9,16 +9,16 @@ import {
   Put,
   UseInterceptors,
 } from '@nestjs/common';
-import { User } from '../../client/entity/user';
 import { UserService } from '../../commun/user/service/user.service';
+import { BaseUser } from '../../client/entity/base-user';
 
-@Controller('/api/service')
+@Controller('/api/user')
 @UseInterceptors(ClassSerializerInterceptor)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() user: User) {
+  create(@Body() user: BaseUser) {
     return this.userService.create(user);
   }
 
@@ -33,7 +33,7 @@ export class UserController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() user: User) {
+  update(@Param('id') id: string, @Body() user: BaseUser) {
     return this.userService.update(id, user);
   }
 

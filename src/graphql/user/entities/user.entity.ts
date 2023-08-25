@@ -1,22 +1,39 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { BaseUser } from '../../../client/entity/base-user';
 
 @ObjectType({ description: 'User object' })
-export class User {
+export class User implements BaseUser {
   @Field(() => ID)
-  id: string;
+  readonly id: string;
 
   @Field(() => String, { description: 'Name of the user' })
-  name: string;
+  readonly name: string;
 
   @Field(() => String, { description: 'Document of the user' })
-  document: string;
+  readonly document: string;
 
   @Field(() => String, { description: 'Birthdate of the user' })
-  birthDate: string;
+  readonly birthDate: string;
 
   @Field(() => [String], { description: 'List of phone numbers of the user' })
-  phones: string[];
+  readonly phones: string[];
 
   @Field(() => [String], { description: 'List of addresses of the user' })
-  addresses: string[];
+  readonly addresses: string[];
+
+  constructor(
+    id: string,
+    name: string,
+    document: string,
+    birthDate: string,
+    phones: string[],
+    addresses: string[],
+  ) {
+    this.id = id;
+    this.name = name;
+    this.document = document;
+    this.birthDate = birthDate;
+    this.phones = phones;
+    this.addresses = addresses;
+  }
 }
