@@ -1,9 +1,9 @@
 import { Logger, Module } from '@nestjs/common';
 import { UserService } from './user/service/user.service';
-import { UserClientModule } from '../client/user-client.module';
+import { ClientModule } from '../client/client.module';
 
 @Module({
-  imports: [UserClientModule],
+  imports: [ClientModule],
   providers: [UserService, Logger],
   exports: [UserService],
 })

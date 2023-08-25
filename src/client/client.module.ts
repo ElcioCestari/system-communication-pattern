@@ -8,4 +8,4 @@ import { HttpModule } from '@nestjs/axios';
   providers: [UserClient, Logger],
   exports: [UserClient],
 })
-export class UserClientModule {}
+export class ClientModule {}
