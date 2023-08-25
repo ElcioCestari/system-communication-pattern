@@ -6,7 +6,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { catchError, lastValueFrom, map } from 'rxjs';
-import { BaseUser } from '../entity/base-user';
+import { BaseUser } from '../../base/entity/base-user';
 
 @Injectable()
 export class UserClient {
