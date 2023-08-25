@@ -3,7 +3,7 @@ import { UserController } from './user.controller';
 import { UserClientModule } from '../../client/user-client/user-client.module';
 import { UserMapper } from './mapper/user-mapper';
 import { CommunModule } from '../../commun/commun.module';
-import { UserService } from '../../commun/service/user.service';
+import { UserService } from '../../commun/user/service/user.service';
 
 @Module({
   imports: [UserClientModule, CommunModule],

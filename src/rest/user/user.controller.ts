@@ -10,7 +10,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { User } from '../../client/entity/user';
-import { UserService } from '../../commun/service/user.service';
+import { UserService } from '../../commun/user/service/user.service';
 
 @Controller('/api/service')
 @UseInterceptors(ClassSerializerInterceptor)

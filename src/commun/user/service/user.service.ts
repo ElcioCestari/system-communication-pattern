@@ -1,7 +1,7 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { UserClient } from '../../client/user-client/user.client';
+import { UserClient } from '../../../client/user-client/user.client';
 // import { UserMapper } from './mapper/service-mapper';
-import { User } from '../../client/entity/user';
+import { User } from '../../../client/entity/user';
 
 @Injectable()
 export class UserService {

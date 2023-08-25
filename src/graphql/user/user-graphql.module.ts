@@ -4,7 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UserClientModule } from '../../client/user-client/user-client.module';
 import { CommunModule } from '../../commun/commun.module';
-import { UserService } from '../../commun/service/user.service';
+import { UserService } from '../../commun/user/service/user.service';
 
 @Module({
   imports: [
