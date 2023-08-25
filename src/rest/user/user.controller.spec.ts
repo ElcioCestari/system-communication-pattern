@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserController } from './user.controller';
-import { UserService } from './user.service';
+import { UserService } from './service.service';
 import { UserMapper } from './mapper/user-mapper';
 import { Logger } from '@nestjs/common';
 import { UserClient } from '../../client/user-client/user.client';

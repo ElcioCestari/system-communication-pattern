@@ -9,10 +9,10 @@ import {
   Put,
   UseInterceptors,
 } from '@nestjs/common';
-import { UserService } from './user.service';
 import { User } from '../../client/entity/user';
+import { UserService } from '../../commun/service/user.service';
 
-@Controller('/api/user')
+@Controller('/api/service')
 @UseInterceptors(ClassSerializerInterceptor)
 export class UserController {
   constructor(private readonly userService: UserService) {}

@@ -20,7 +20,7 @@ Content-Type: application/json
 
 
 ### Send POST request with json body
-PUT http://localhost:3001/api/user/2
+PUT http://localhost:3001/api/user/1
 Content-Type: application/json
 
 {

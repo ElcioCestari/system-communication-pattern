@@ -1,13 +1,13 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { UserClient } from '../../client/user-client/user.client';
-import { UserMapper } from './mapper/user-mapper';
+// import { UserMapper } from './mapper/service-mapper';
 import { User } from '../../client/entity/user';
 
 @Injectable()
 export class UserService {
   constructor(
     private readonly userClient: UserClient,
-    private readonly mapper: UserMapper,
+    // private readonly mapper: UserMapper,
     private readonly logger: Logger,
   ) {}
 

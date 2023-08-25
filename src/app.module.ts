@@ -3,6 +3,7 @@ import { UserModule } from './rest/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { UserClientModule } from './client/user-client/user-client.module';
 import { UserGraphqlModule } from './graphql/user/user-graphql.module';
+import { CommunModule } from './commun/commun.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { UserGraphqlModule } from './graphql/user/user-graphql.module';
     UserGraphqlModule,
     UserModule,
     UserClientModule,
+    CommunModule,
   ],
   controllers: [],
   providers: [],
