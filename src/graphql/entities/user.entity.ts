@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { BaseUser } from '../../../base/entity/base-user';
+import { BaseUser } from '../../base/entity/base-user';
 
 @ObjectType({ description: 'User object' })
 export class User implements BaseUser {

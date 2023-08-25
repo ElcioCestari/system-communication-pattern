@@ -1,10 +1,10 @@
 import { Logger, Module } from '@nestjs/common';
-import { UserResolver } from './user.resolver';
+import { UserResolver } from './resolver/user.resolver';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { ClientModule } from '../../client/client.module';
-import { UserService } from '../../common/user/service/user.service';
-import { CommonModule } from '../../common/common-module';
+import { ClientModule } from '../client/client.module';
+import { UserService } from '../common/service/user/user.service';
+import { CommonModule } from '../common/common-module';
 
 @Module({
   imports: [
@@ -18,4 +18,4 @@ import { CommonModule } from '../../common/common-module';
   ],
   providers: [UserResolver, UserService, Logger],
 })
-export class UserGraphqlModule {}
+export class GraphqlModule {}

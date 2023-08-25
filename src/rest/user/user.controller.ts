@@ -9,7 +9,7 @@ import {
   Put,
   UseInterceptors,
 } from '@nestjs/common';
-import { UserService } from '../../common/user/service/user.service';
+import { UserService } from '../../common/service/user/user.service';
 import { BaseUser } from '../../base/entity/base-user';
 
 @Controller('/api/user')

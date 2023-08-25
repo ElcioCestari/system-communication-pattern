@@ -2,13 +2,13 @@ import { Module } from '@nestjs/common';
 import { UserModule } from './rest/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { ClientModule } from './client/client.module';
-import { UserGraphqlModule } from './graphql/user/user-graphql.module';
+import { GraphqlModule } from './graphql/graphql.module';
 import { CommonModule } from './common/common-module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    UserGraphqlModule,
+    GraphqlModule,
     UserModule,
     ClientModule,
     CommonModule,
