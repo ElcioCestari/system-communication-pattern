@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './rest/user/user.module';
 import { ConfigModule } from '@nestjs/config';
-import { UserClientModule } from './client/user-client/user-client.module';
+import { UserClientModule } from './client/user-client.module';
 import { UserGraphqlModule } from './graphql/user/user-graphql.module';
-import { CommunModule } from './commun/commun.module';
+import { CommonModule } from './common/commonModule';
 
 @Module({
   imports: [
@@ -11,7 +11,7 @@ import { CommunModule } from './commun/commun.module';
     UserGraphqlModule,
     UserModule,
     UserClientModule,
-    CommunModule,
+    CommonModule,
   ],
   controllers: [],
   providers: [],

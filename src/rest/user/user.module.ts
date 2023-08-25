@@ -1,12 +1,12 @@
 import { Logger, Module } from '@nestjs/common';
 import { UserController } from './user.controller';
-import { UserClientModule } from '../../client/user-client/user-client.module';
+import { UserClientModule } from '../../client/user-client.module';
 import { UserMapper } from './mapper/user-mapper';
-import { CommunModule } from '../../commun/commun.module';
-import { UserService } from '../../commun/user/service/user.service';
+import { CommonModule } from '../../common/commonModule';
+import { UserService } from '../../common/user/service/user.service';
 
 @Module({
-  imports: [UserClientModule, CommunModule],
+  imports: [UserClientModule, CommonModule],
   controllers: [UserController],
   providers: [UserService, UserMapper, Logger],
 })
