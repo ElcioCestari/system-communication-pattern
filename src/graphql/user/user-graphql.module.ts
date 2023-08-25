@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
-import { UserService } from './user.service';
+import { Logger, Module } from '@nestjs/common';
 import { UserResolver } from './user.resolver';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UserClientModule } from '../../client/user-client/user-client.module';
 import { CommunModule } from '../../commun/commun.module';
+import { UserService } from '../../commun/service/user.service';
 
 @Module({
   imports: [
@@ -16,6 +16,6 @@ import { CommunModule } from '../../commun/commun.module';
     UserClientModule,
     CommunModule,
   ],
-  providers: [UserResolver, UserService],
+  providers: [UserResolver, UserService, Logger],
 })
 export class UserGraphqlModule {}
