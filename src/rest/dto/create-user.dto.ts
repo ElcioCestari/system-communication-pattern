@@ -1,17 +1,18 @@
 import { Expose } from 'class-transformer';
+import { BasePhone } from '../../base/entity/base-phone';
 
 export class CreateUserDto {
   @Expose({ name: 'name' }) readonly _name: string;
   @Expose({ name: 'document' }) readonly _document: string;
   @Expose({ name: 'birthDate' }) readonly _birthDate: string;
-  @Expose({ name: 'phones' }) readonly _phones: string[];
+  @Expose({ name: 'phones' }) readonly _phones: BasePhone[];
   @Expose({ name: 'addresses' }) readonly _addresses: string[];
 
   constructor(
     name: string,
     document: string,
     birthDate: string,
-    phones: string[],
+    phones: BasePhone[],
     addresses: string[],
   ) {
     this._name = name;
@@ -33,7 +34,7 @@ export class CreateUserDto {
     return this._birthDate;
   }
 
-  get phones(): string[] {
+  get phones(): BasePhone[] {
     return this._phones;
   }
 

@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { BaseUser } from '../../base/entity/base-user';
+import { BasePhone } from '../../base/entity/base-phone';
+import { Phone } from './phone-entity';
 
 @ObjectType({ description: 'User object' })
 export class User implements BaseUser {
@@ -15,8 +17,8 @@ export class User implements BaseUser {
   @Field(() => String, { description: 'Birthdate of the user' })
   readonly birthDate: string;
 
-  @Field(() => [String], { description: 'List of phone numbers of the user' })
-  readonly phones: string[];
+  @Field(() => [Phone], { description: 'List of phone numbers of the user' })
+  readonly phones: Phone[];
 
   @Field(() => [String], { description: 'List of addresses of the user' })
   readonly addresses: string[];
@@ -26,14 +28,14 @@ export class User implements BaseUser {
     name: string,
     document: string,
     birthDate: string,
-    phones: string[],
+    phones: BasePhone[],
     addresses: string[],
   ) {
     this.id = id;
     this.name = name;
     this.document = document;
     this.birthDate = birthDate;
-    this.phones = phones;
+    this.phones = <Phone[]>phones;
     this.addresses = addresses;
   }
 }

@@ -1,4 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { BasePhone } from '../../base/entity/base-phone';
+import { CreatePhoneInput } from './create-phone.input';
 
 @InputType()
 export class CreateUserInput {
@@ -11,10 +13,10 @@ export class CreateUserInput {
   @Field(() => String, { description: 'Birthdate of the user' })
   birthDate: string;
 
-  @Field(() => [String], {
+  @Field(() => [CreatePhoneInput], {
     description: 'List of phone numbers of the user',
   })
-  phones: string[];
+  phones: BasePhone[];
 
   @Field(() => [String], { description: 'List of addresses of the user' })
   addresses: string[];

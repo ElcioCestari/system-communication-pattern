@@ -6,7 +6,9 @@ query GET_ALL {
    id,
     name,
     document,
-    phones,
+    phones {
+       number
+     },
     birthDate,
     addresses
   }
@@ -17,9 +19,12 @@ query GET_ALL {
 GRAPHQL http://localhost:3001/graphql
 
 query GET_ONE_BY_ID {
-  user(id: 1) {
+  user(id: 2) {
     name,
-    id
+    id,
+    phones {
+      number
+    }
   }
 }
 
@@ -32,8 +37,11 @@ mutation SAVE {
     name: "Dona Maria",
     document: "123456",
     phones: [
-          "123-456-7890",
-          "987-654-3210"
+          {
+            number: "991461174",
+            areaCode: "67",
+            countryCode: "+55"
+          }
         ],
     birthDate: "1986-01-01",
     addresses: [
@@ -43,7 +51,11 @@ mutation SAVE {
   }) {
     id,
     name,
-    document
+    document,
+    phones {
+       id,
+       number
+    }
   }
 }
 
@@ -52,12 +64,15 @@ mutation SAVE {
 GRAPHQL http://localhost:3001/graphql
 
 mutation UPDATE {
-  updateUser(id: "1", updateUserInput: {
+  updateUser(id: "2", updateUserInput: {
     name: "Don Julio",
     document: "123456",
     phones: [
-          "123-456-7890",
-          "987-654-3210"
+          {
+             areaCode: "65"
+             countryCode: "+55",
+             number: "991461174"
+          }
         ],
     birthDate: "1986-01-01",
     addresses: [
@@ -67,7 +82,11 @@ mutation UPDATE {
   }) {
     id,
     name,
-    document
+    document,
+    phones {
+      number,
+      areaCode
+    }
   }
 }
 
@@ -77,5 +96,5 @@ mutation UPDATE {
 GRAPHQL http://localhost:3001/graphql
 
 mutation DELETE {
-  removeUser(id: "1")
+  removeUser(id: "2")
 }
