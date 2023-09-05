@@ -52,6 +52,9 @@ export class UserClient {
         map((value) => value.data),
         catchError(async (err) => {
           this.logger.error(`error to make a GET ${err}`);
+          if (err.response.status === 404) {
+            return null;
+          }
           throw err;
         }),
       );
