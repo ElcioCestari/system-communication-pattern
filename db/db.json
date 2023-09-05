@@ -1,3 +1,21 @@
 {
-  "users": []
+  "users": [
+    {
+      "name": "Dona Maria",
+      "document": "123456",
+      "birthDate": "1986-01-01",
+      "phones": [
+        {
+          "areaCode": "67",
+          "countryCode": "+55",
+          "number": "991461174"
+        }
+      ],
+      "addresses": [
+        "123 Main St, CityA",
+        "456 Elm St, CityB"
+      ],
+      "id": 1
+    }
+  ]
 }

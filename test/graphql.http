@@ -19,7 +19,33 @@ query GET_ALL {
 GRAPHQL http://localhost:3001/graphql
 
 query GET_ONE_BY_ID {
-  user(id: 2) {
+  user(id: 1) {
+    name,
+    id,
+    phones {
+      number
+    }
+  },
+
+   findAll {
+   id,
+    name,
+    document,
+    phones {
+       number
+     },
+    birthDate,
+    addresses
+  }
+}
+
+
+###
+# GET ONE USER BY ID and all users
+GRAPHQL http://localhost:3001/graphql
+
+query GET_ONE_BY_ID {
+  user(id: 1) {
     name,
     id,
     phones {
@@ -53,7 +79,6 @@ mutation SAVE {
     name,
     document,
     phones {
-       id,
        number
     }
   }
