@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ClientModule } from './client/client.module';
 import { GraphqlModule } from './graphql/graphql.module';
 import { CommonModule } from './common/common-module';
+import { UserGrpcModule } from './grpc/user-grpc.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { CommonModule } from './common/common-module';
     RestModule,
     ClientModule,
     CommonModule,
+    UserGrpcModule,
   ],
   controllers: [],
   providers: [],
