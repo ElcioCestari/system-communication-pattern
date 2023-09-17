@@ -15,11 +15,11 @@ async function bootstrap() {
     name: 'USER',
     transport: Transport.GRPC,
     options: {
-      url: 'http://localhost:5000',
       package: 'user',
-      protoPath: join(__dirname, '/proto/user.proto'),
+      protoPath: join(__dirname, 'grpc/proto/user.proto'),
     },
   });
+  await app.startAllMicroservices();
   await app.listen(port);
   const logger = new Logger('Bootstrap');
   logger.log(`Application is running on port ${port}`);

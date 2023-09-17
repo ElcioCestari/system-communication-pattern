@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserRequest } from './dto/create-user.request';
 import { UpdateUserDto } from './dto/update-user.dto';
+import {UserResponse} from "./dto/user.response";
 
 @Injectable()
 export class UserService {
-  create(createGrpcDto: CreateUserDto) {
-    return 'This action adds a new grpc';
+  create(createGrpcDto: CreateUserRequest): UserResponse {
+    return {name: 'elcio'};
   }
 
   findAll() {
