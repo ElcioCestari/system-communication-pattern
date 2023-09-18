@@ -16,6 +16,44 @@
         "456 Elm St, CityB"
       ],
       "id": 1
+    },
+    {
+      "name": "John MARIA 1",
+      "id": 2
+    },
+    {
+      "name": "John MARIA 1",
+      "document": "123456789",
+      "birthDate": "1990-01-01",
+      "phones": [
+        {
+          "number": "991461174",
+          "areaCode": "65",
+          "countryCode": "+55"
+        }
+      ],
+      "addresses": [
+        "123 Main St, CityA",
+        "456 Elm St, CityB"
+      ],
+      "id": 3
+    },
+    {
+      "name": "John MARIA 1",
+      "document": "123456789",
+      "birthDate": "1990-01-01",
+      "phones": [
+        {
+          "number": "991461174",
+          "areaCode": "65",
+          "countryCode": "+55"
+        }
+      ],
+      "addresses": [
+        "123 Main St, CityA",
+        "456 Elm St, CityB"
+      ],
+      "id": 4
     }
   ]
 }

@@ -12,10 +12,24 @@ service UserService {
 
 message CreateUserRequest {
   string name = 1;
+  string document = 2;
+  string birthDate = 3;
+  repeated BasePhone phones = 4;
+  repeated string addresses = 5;
+}
+
+message BasePhone {
+  string number = 1;
+  string areaCode = 2;
+  string countryCode = 3;
 }
 
 message UserResponse {
   string name = 1;
+  string document = 2;
+  string birthDate = 3;
+  repeated BasePhone phones = 4;
+  repeated string addresses = 5;
 }
 
 message UserId {
