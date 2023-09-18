@@ -11,11 +11,16 @@ export class GrpcUserService {
   constructor(private readonly userService: UserService) {}
 
   create(createGrpcDto: CreateUserRequest): Promise<UserResponse> {
-    return this.userService.create(<BaseUser>createGrpcDto);
+    return this.userService
+      .create(<BaseUser>createGrpcDto)
+      .catch(this.handleException());
   }
 
-  async findAll(): Promise<any> {
-    return { user: await this.userService.findAll() };
+  findAll(): Promise<{ user: UserResponse[] }> {
+    return this.userService
+      .findAll()
+      .then(this.handleFindAll())
+      .catch(this.handleException());
   }
 
   findOne(id: number): Promise<UserResponse> {
@@ -44,6 +49,12 @@ export class GrpcUserService {
             message: 'user not found',
           })
         : reason;
+    };
+  }
+
+  private handleFindAll() {
+    return (data: BaseUser[]) => {
+      return { user: data };
     };
   }
 }
