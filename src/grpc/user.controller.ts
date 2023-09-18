@@ -19,7 +19,7 @@ export class UserController {
     return this.grpcService.findAll();
   }
 
-  @MessagePattern('findOneGrpc')
+  @GrpcMethod('UserService')
   findOne(@Payload() id: number) {
     return this.grpcService.findOne(id);
   }
