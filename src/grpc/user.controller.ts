@@ -1,5 +1,5 @@
 import { Controller } from '@nestjs/common';
-import { GrpcMethod, MessagePattern, Payload } from '@nestjs/microservices';
+import { GrpcMethod, Payload } from '@nestjs/microservices';
 import { GrpcUserService } from './grpc-user.service';
 import { CreateUserRequest } from './dto/create-user.request';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -9,8 +9,7 @@ import { UserResponse } from './dto/user.response';
 export class UserController {
   constructor(private readonly grpcService: GrpcUserService) {}
 
-  @GrpcMethod('UserService', 'Create')
-  @MessagePattern('Create')
+  @GrpcMethod('UserService')
   create(@Payload() createGrpcDto: CreateUserRequest): Promise<UserResponse> {
     return this.grpcService.create(createGrpcDto);
   }
@@ -30,8 +29,8 @@ export class UserController {
     return this.grpcService.update(updateGrpcDto.id, updateGrpcDto);
   }
 
-  @GrpcMethod('UserService')
-  remove(@Payload() id: number) {
-    return this.grpcService.remove(id);
+  @GrpcMethod('UserService', 'Delete')
+  remove(@Payload() userId: { id: number }) {
+    return this.grpcService.remove(userId.id);
   }
 }
