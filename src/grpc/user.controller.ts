@@ -1,8 +1,9 @@
 import { Controller } from '@nestjs/common';
-import {GrpcMethod, MessagePattern, Payload} from '@nestjs/microservices';
+import { GrpcMethod, MessagePattern, Payload } from '@nestjs/microservices';
 import { GrpcUserService } from './grpc-user.service';
 import { CreateUserRequest } from './dto/create-user.request';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserResponse } from './dto/user.response';
 
 @Controller()
 export class UserController {
@@ -10,7 +11,7 @@ export class UserController {
 
   @GrpcMethod('UserService', 'Create')
   @MessagePattern('Create')
-  create(@Payload() createGrpcDto: CreateUserRequest) {
+  create(@Payload() createGrpcDto: CreateUserRequest): Promise<UserResponse> {
     return this.grpcService.create(createGrpcDto);
   }
 
@@ -20,16 +21,16 @@ export class UserController {
   }
 
   @GrpcMethod('UserService')
-  findOne(@Payload() id: number) {
-    return this.grpcService.findOne(id);
+  findOne(@Payload() userId: { id: number }) {
+    return this.grpcService.findOne(userId.id);
   }
 
-  @MessagePattern('updateGrpc')
+  @GrpcMethod('UserService')
   update(@Payload() updateGrpcDto: UpdateUserDto) {
     return this.grpcService.update(updateGrpcDto.id, updateGrpcDto);
   }
 
-  @MessagePattern('removeGrpc')
+  @GrpcMethod('UserService')
   remove(@Payload() id: number) {
     return this.grpcService.remove(id);
   }
