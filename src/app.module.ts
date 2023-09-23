@@ -5,6 +5,7 @@ import { ClientModule } from './client/client.module';
 import { GraphqlModule } from './graphql/graphql.module';
 import { CommonModule } from './common/common-module';
 import { UserGrpcModule } from './grpc/user-grpc.module';
+import { WebsocketGateway } from './websocket/websocket.gateway';
 
 @Module({
   imports: [
@@ -16,6 +17,6 @@ import { UserGrpcModule } from './grpc/user-grpc.module';
     UserGrpcModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [WebsocketGateway],
 })
 export class AppModule {}

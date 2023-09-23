@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import {HttpStatus, INestApplication} from '@nestjs/common';
+import { HttpStatus, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 
@@ -23,6 +23,6 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer())
       .get('/api/user')
       .expect(HttpStatus.OK)
-      .expect(res => expect(res.body.length).toBeGreaterThan(0));
+      .expect((res) => expect(res.body.length).toBeGreaterThan(0));
   });
 });
