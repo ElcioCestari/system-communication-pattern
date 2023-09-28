@@ -2,11 +2,11 @@ import { Expose } from 'class-transformer';
 import { BasePhone } from '../../base/entity/base-phone';
 
 export class CreateUserDto {
-  @Expose({ name: 'name' }) readonly _name: string;
-  @Expose({ name: 'document' }) readonly _document: string;
-  @Expose({ name: 'birthDate' }) readonly _birthDate: string;
-  @Expose({ name: 'phones' }) readonly _phones: BasePhone[];
-  @Expose({ name: 'addresses' }) readonly _addresses: string[];
+  @Expose({ name: 'name' }) private readonly _name: string;
+  @Expose({ name: 'document' }) private readonly _document: string;
+  @Expose({ name: 'birthDate' }) private readonly _birthDate: string;
+  @Expose({ name: 'phones' }) private readonly _phones: BasePhone[];
+  @Expose({ name: 'addresses' }) private readonly _addresses: string[];
 
   constructor(
     name: string,

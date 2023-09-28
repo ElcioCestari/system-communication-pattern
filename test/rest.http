@@ -1,12 +1,12 @@
-### GET request with a header
+### GET ALL
 GET http://localhost:3001/api/user
 Accept: application/json
 
-### GET request with a header
+### GET BY ID
 GET http://localhost:3001/api/user/1
 Accept: application/json
 
-### Send POST request with json body
+### SAVE
 POST http://localhost:3001/api/user
 Content-Type: application/json
 
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 
-### Send POST request with json body
+### UPDATE
 PUT http://localhost:3001/api/user/1
 Content-Type: application/json
 
@@ -41,6 +41,6 @@ Content-Type: application/json
 }
 
 
-### DELETE request with a header
+### DELETE
 DELETE http://localhost:3001/api/user/1
 Accept: application/json
