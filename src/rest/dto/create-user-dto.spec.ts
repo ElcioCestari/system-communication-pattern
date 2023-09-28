@@ -1,7 +1,7 @@
 import { CreateUserDto } from './create-user.dto';
 
 describe('CreateUserDto', () => {
-  it('given a json then assert that was converted', () => {
+  it('given a json then assert that isnt a defined object', () => {
     const dto: CreateUserDto = {
       name: 'John Doe',
       document: '123456789',
@@ -11,22 +11,24 @@ describe('CreateUserDto', () => {
     } as unknown as CreateUserDto;
     expect(dto).not.toBeNull();
     expect(dto.name).toEqual('John Doe');
+    expect(dto).not.toBeInstanceOf(CreateUserDto);
   });
-  it('given a object by constructor then assert that was converted', () => {
+  it('given a object by constructor then assert that is a CreateUserDto', () => {
     const dto: CreateUserDto = new CreateUserDto(
       'John Doe',
       '123456789',
       '1990-01-01',
       [
         {
-          number: "91234-5678",
-          areaCode: "67",
-          countryCode: "55",
-        }
+          number: '91234-5678',
+          areaCode: '67',
+          countryCode: '55',
+        },
       ],
       ['123 Main St, CityA', '456 Elm St, CityB'],
     );
     expect(dto).not.toBeNull();
     expect(dto.name).toEqual('John Doe');
+    expect(dto).toBeInstanceOf(CreateUserDto);
   });
 });
