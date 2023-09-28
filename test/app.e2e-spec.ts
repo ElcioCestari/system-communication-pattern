@@ -23,6 +23,9 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer())
       .get('/api/user')
       .expect(HttpStatus.OK)
-      .expect((res) => expect(res.body.length).toBeGreaterThan(0));
+      .expect((res) => {
+        console.log(res.body)
+        expect(res.body.length).toBeGreaterThan(0);
+      });
   });
 });
