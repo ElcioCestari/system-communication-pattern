@@ -17,7 +17,13 @@ describe('CreateUserDto', () => {
       'John Doe',
       '123456789',
       '1990-01-01',
-      ['123-456-7890', '987-654-3210'],
+      [
+        {
+          number: "91234-5678",
+          areaCode: "67",
+          countryCode: "55",
+        }
+      ],
       ['123 Main St, CityA', '456 Elm St, CityB'],
     );
     expect(dto).not.toBeNull();
