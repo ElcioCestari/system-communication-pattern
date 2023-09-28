@@ -8,7 +8,6 @@ import { BaseUser } from '../../base/entity/base-user';
 export class UserService {
   constructor(
     private readonly userClient: UserClient,
-    // private readonly mapper: UserMapper,
     private readonly logger: Logger,
   ) {}
 

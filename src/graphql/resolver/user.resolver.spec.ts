@@ -1,7 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserResolver } from './user.resolver';
-import { UserService } from './user.service';
 import { UserClient } from '../../client/user-client/user.client';
+import { UserService } from '../../common/service/user.service';
+import {Logger} from "@nestjs/common";
 
 describe('UserResolver', () => {
   let resolver: UserResolver;
@@ -12,6 +13,7 @@ describe('UserResolver', () => {
         UserResolver,
         UserService,
         { provide: UserClient, useValue: {} },
+        { provide: Logger, useValue: {} },
       ],
     }).compile();
 
