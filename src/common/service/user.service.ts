@@ -64,7 +64,7 @@ export class UserService {
       }
       return this.userClient.delete(id);
     } catch (e) {
-      this.logger.error(`Error to findOne ${e}`);
+      this.logger.error(`Error to delete ${e}`);
       throw e;
     }
   }

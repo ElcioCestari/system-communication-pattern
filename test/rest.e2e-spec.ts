@@ -98,4 +98,19 @@ describe('UserController (e2e)', () => {
     });
   });
 
+  describe('/api/user/:id (DELETE)', () => {
+    it('when DELETE an user then return this void', () => {
+      const user: BaseUser = createBaseUserFaker();
+      clientMock.getById.mockResolvedValueOnce(user);
+      clientMock.delete.mockResolvedValueOnce(null);
+
+      return request(app.getHttpServer())
+        .delete(`${URL}/${user.id}`)
+        .expect(HttpStatus.OK)
+        .expect((res) => {
+          expect(res.body).toEqual({});
+        });
+    });
+  });
+
 });
