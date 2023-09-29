@@ -17,6 +17,9 @@ describe('UserController (e2e)', () => {
   let clientMock = {
     get: jest.fn(),
     getById: jest.fn(),
+    post: jest.fn(),
+    put: jest.fn(),
+    delete: jest.fn(),
   };
 
   beforeAll(async () => {
@@ -64,14 +67,15 @@ describe('UserController (e2e)', () => {
     });
   });
 
-  describe('/api/user/:id (GET)', () => {
-    it('when found an user then return this user', () => {
+  describe('/api/user (POST)', () => {
+    it('when SAVE an user then return this user', () => {
       const user: BaseUser = createBaseUserFaker();
-      clientMock.getById.mockResolvedValueOnce(user);
+      clientMock.post.mockResolvedValueOnce(user);
 
       return request(app.getHttpServer())
-        .get(`${URL}/${user.id}`)
-        .expect(HttpStatus.OK)
+        .post(`${URL}`)
+        .send(user)
+        .expect(HttpStatus.CREATED)
         .expect((res) => {
           expect(res.body).toEqual(user);
         });
