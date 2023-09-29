@@ -58,7 +58,7 @@ export class UserService {
 
   async remove(id: string) {
     try {
-      const user: BaseUser = await this.userClient.getById('' + id);
+      const user: BaseUser = await this.userClient.getById(id);
       if (!user) {
         throw new NotFoundException(`User with id ${id} was not found`);
       }
