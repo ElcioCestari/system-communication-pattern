@@ -51,7 +51,7 @@ export class UserService {
       user.id = id;
       return await this.userClient.put(id, user);
     } catch (e) {
-      this.logger.error(`Error to findOne ${e}`);
+      this.logger.error(`Error to update ${e}`);
       throw e;
     }
   }

@@ -81,4 +81,21 @@ describe('UserController (e2e)', () => {
         });
     });
   });
+
+  describe('/api/user/:id (PUT)', () => {
+    it('when UPDATE an user then return this user', () => {
+      const user: BaseUser = createBaseUserFaker();
+      clientMock.put.mockResolvedValueOnce(user);
+      clientMock.getById.mockResolvedValueOnce(user);
+
+      return request(app.getHttpServer())
+        .put(`${URL}/${user.id}`)
+        .send(user)
+        .expect(HttpStatus.OK)
+        .expect((res) => {
+          expect(res.body).toEqual(user);
+        });
+    });
+  });
+
 });
