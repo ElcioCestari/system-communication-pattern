@@ -17,12 +17,10 @@ export class WebsocketGateway implements OnGatewayConnection {
   }
 
   @SubscribeMessage('message')
-  handleMessage(client: Socket, payload: any): string {
-    // client.broadcast.emit('testando');
+  handleMessage(client: Socket, payload: any): void {
     this.socket.emit('onMessage', {
       msg: client.id,
       content: payload,
     });
-    return 'Hello world!';
   }
 }
